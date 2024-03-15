@@ -74,6 +74,7 @@ public class AIManagement : MonoBehaviour
 
                 animator.SetBool("Move?", true);
 
+
                 if (currentTarget == transform.position)
                 {
                     animator.SetBool("Move?", false);
@@ -95,9 +96,11 @@ public class AIManagement : MonoBehaviour
 
                 animator.SetBool("Move?", true);
 
+
                 Collider[] hit = Physics.OverlapSphere(hitPoint.position, hitDistance, targetMask);
 
                 Collider[] ultraHit = Physics.OverlapSphere(hitPoint.position, ultraHitDistance, targetMask);
+
 
                 if (hit.Length != 0 && Random.Range(0, 4) >= 1.5f)
                 {
@@ -130,6 +133,7 @@ public class AIManagement : MonoBehaviour
 
         Collider[] ultraHit = Physics.OverlapSphere(hitPoint.position, ultraHitDistance, targetMask);
 
+
         if(ultraHit.Length != 0)
         {
             player.SetActive(false);
@@ -140,15 +144,18 @@ public class AIManagement : MonoBehaviour
     {
         Collider[] rangeChecks = Physics.OverlapSphere(transform.position, radius, targetMask);
 
+
         if (rangeChecks.Length != 0)
         {
             Transform target = rangeChecks[0].transform;
 
             Vector3 directionToTarget = (target.position - transform.position).normalized;
 
+
             if (Vector3.Angle(transform.forward, directionToTarget) < angle / 2)
             {
                 float distanceToTarget = Vector3.Distance(transform.position, target.position);
+
 
                 if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstructionMask)) {
                     canSeePlayer = true;
@@ -164,7 +171,6 @@ public class AIManagement : MonoBehaviour
         else if (canSeePlayer) {
             canSeePlayer = false;
         }
-            
     }
 
     private IEnumerator FOVRoutine()

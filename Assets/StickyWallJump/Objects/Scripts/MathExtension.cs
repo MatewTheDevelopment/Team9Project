@@ -1,10 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
-
-
-
 public static class MathExtension
 {
     public static Quaternion RotationMatchUp(Quaternion rotation, Vector3 up) => Quaternion.FromToRotation(rotation * Vector3.up, up) * rotation;
