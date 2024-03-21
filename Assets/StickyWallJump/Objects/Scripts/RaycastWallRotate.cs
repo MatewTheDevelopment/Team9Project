@@ -6,7 +6,15 @@ public class RaycastWallRotate : MonoBehaviour
 {
     public GameObject objectPlayer;
 
-    public float rayLength = 0.1f;
+    public float rayLengthLeft = 0.1f;
+    public float rayLengthRight = 0.1f;
+    public float rayLengthUp = 0.1f;
+    public float rayLengthDown = 0.1f;
+
+    public GameObject leftRotationObject;
+    public GameObject rightRotationObject;
+    public GameObject upRotationObject;
+
     public Vector3 leftRotation;
     public Vector3 rightRotation;
     public Vector3 upRotation;
@@ -16,55 +24,50 @@ public class RaycastWallRotate : MonoBehaviour
 
     public bool isActive;
 
-    void Update()
+    private void Start()
     {
-        transform.position = objectPlayer.transform.position;
+        RaycastUpdater();
+    }
+
+    public void RaycastUpdater()
+    {
+        Debug.Log("Hello"); 
 
         RaycastHit hitLeft;
         RaycastHit hitRight;
         RaycastHit hitUp;
         RaycastHit hitDown;
 
-        if (Physics.Raycast(transform.position, -transform.right, out hitLeft, rayLength, arcLayer))
+        if (Physics.Raycast(leftRotationObject.transform.position, -leftRotationObject.transform.right, out hitLeft, rayLengthLeft, arcLayer, QueryTriggerInteraction.Ignore))
         {
-            if (isActive)
-            {
-                objectPlayer.transform.rotation = Quaternion.Euler(leftRotation);
-                objectPlayer.transform.position = hitLeft.point;
-                isActive = false;
-            }
+            Attract(leftRotation, hitLeft);
         }
-        else if (Physics.Raycast(transform.position, transform.right, out hitRight, rayLength, arcLayer))
+        else if (Physics.Raycast(rightRotationObject.transform.position, rightRotationObject.transform.right, out hitRight, rayLengthRight, arcLayer, QueryTriggerInteraction.Ignore))
         {
-            if (isActive)
-            {
-                objectPlayer.transform.rotation = Quaternion.Euler(rightRotation);
-                objectPlayer.transform.position = hitRight.point;
-                isActive = false;
-            }
+            Attract(rightRotation, hitRight);
         }
-        else if (Physics.Raycast(transform.position, transform.up, out hitUp, rayLength, arcLayer))
+        else if (Physics.Raycast(upRotationObject.transform.position, upRotationObject.transform.up, out hitUp, rayLengthUp, arcLayer, QueryTriggerInteraction.Ignore))
         {
-            if (isActive)
-            {
-                objectPlayer.transform.rotation = Quaternion.Euler(upRotation);
-                objectPlayer.transform.position = hitUp.point;
-                isActive = false;
-            }
+            Attract(upRotation, hitUp);
         }
-        else if (Physics.Raycast(transform.position, -transform.up, out hitDown, rayLength, arcLayer))
+        else if (Physics.Raycast(transform.position, -transform.up, out hitDown, rayLengthDown, arcLayer, QueryTriggerInteraction.Ignore))
         {
-            if (isActive)
-            {
-                objectPlayer.transform.rotation = Quaternion.Euler(downRotation);
-                objectPlayer.transform.position = hitDown.point;
-                isActive = false;
-            }
+            Attract(downRotation, hitDown);
         }
+    }
 
-        Debug.DrawRay(transform.position, -transform.right * rayLength, Color.red);
-        Debug.DrawRay(transform.position, transform.right * rayLength, Color.green);
-        Debug.DrawRay(transform.position, transform.up * rayLength, Color.blue);
-        Debug.DrawRay(transform.position, -transform.up * rayLength, Color.yellow);
+    private void Update()
+    {
+        Debug.DrawRay(leftRotationObject.transform.position, -leftRotationObject.transform.right * rayLengthLeft, Color.red);
+        Debug.DrawRay(rightRotationObject.transform.position, rightRotationObject.transform.right * rayLengthRight, Color.green);
+        Debug.DrawRay(upRotationObject.transform.position, upRotationObject.transform.up * rayLengthUp, Color.blue);
+        Debug.DrawRay(transform.position, -transform.up * rayLengthDown, Color.yellow);
+    }
+
+    public void Attract(Vector3 rotate, RaycastHit hit)
+    {
+        objectPlayer.transform.rotation = Quaternion.Euler(rotate);
+        objectPlayer.transform.position = hit.point;
+        objectPlayer.GetComponent<Rigidbody>().isKinematic = true;
     }
 }

@@ -22,7 +22,7 @@ public static class PhysicsExtension
             B = center + rotation * forwardRadius;
             AB = B - A;
 
-            if (Physics.Raycast(A, AB, out hit, AB_magnitude, layer))
+            if (Physics.Raycast(A, AB, out hit, AB_magnitude, layer, QueryTriggerInteraction.Ignore))
             {
                 if (drawGizmo)
                     Gizmos.DrawLine(A, hit.point);

@@ -18,8 +18,6 @@ public class KeyboardController : Controller
     [SerializeField] KeyCode key_X = KeyCode.H;
     [SerializeField] KeyCode key_Y = KeyCode.U;
 
-
-
     Vector2 Stick(KeyCode left, KeyCode right, KeyCode down, KeyCode up)
     {
         Vector2 stick = Vector2.zero;
@@ -34,7 +32,6 @@ public class KeyboardController : Controller
 
         return stick;
     }
-
 
     void Update()
     {
