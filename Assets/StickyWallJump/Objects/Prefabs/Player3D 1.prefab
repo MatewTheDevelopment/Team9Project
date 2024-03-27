@@ -20767,7 +20767,7 @@ Rigidbody:
   m_Drag: 0.5
   m_AngularDrag: 0
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 120
   m_CollisionDetection: 0
@@ -20939,13 +20939,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   key_stickL_left: 97
   key_stickL_right: 100
-  key_stickL_down: 115
-  key_stickL_up: 122
-  key_stickR_left: 276
-  key_stickR_right: 275
-  key_stickR_down: 274
-  key_stickR_up: 273
-  key_A: 110
-  key_B: 106
-  key_X: 104
-  key_Y: 117
+  key_stickL_down: 0
+  key_stickL_up: 0
+  key_stickR_left: 0
+  key_stickR_right: 0
+  key_stickR_down: 0
+  key_stickR_up: 0
+  key_A: 0
+  key_B: 0
+  key_X: 0
+  key_Y: 0
