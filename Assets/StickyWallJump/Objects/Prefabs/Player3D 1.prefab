@@ -1935,7 +1935,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 577283189330430298}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalPosition: {x: -0, y: -0.0217, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -20303,6 +20303,7 @@ GameObject:
   m_Component:
   - component: {fileID: 577283190361999953}
   - component: {fileID: 577283190361999958}
+  - component: {fileID: 4535942818575353711}
   m_Layer: 0
   m_Name: Model_stay_with_rig-2
   m_TagString: Untagged
@@ -20342,6 +20343,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LeftPosition: {x: 0, y: -0.6894299, z: 0, w: 0.7243524}
   RightPosition: {x: 0, y: 0.6894299, z: 0, w: 0.7243524}
+--- !u!111 &4535942818575353711
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 577283191267589890}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 0}
+  m_Animations:
+  - {fileID: 7400000, guid: 81df0cf4daa120740808eb440d0ec8f4, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &577283191268940075
 GameObject:
   m_ObjectHideFlags: 0
